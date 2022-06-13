@@ -6,9 +6,9 @@
  *
  */
 //const dbConnect = require("./lib/dbConnect");
-const Book = require("../models/Book");
-const mongoose = require("mongoose");
-const CONNECTION_STRING = process.env.MONGODB_URI; //MongoClient.connect(CONNECTION_STRING, function(err, db) {});
+//const Book = require("../models/Book");
+//const mongoose = require("mongoose");
+//const CONNECTION_STRING = process.env.MONGODB_URI; //MongoClient.connect(CONNECTION_STRING, function(err, db) {});
 
 let fname = "./data/books.json";
 const fs = require("fs");
