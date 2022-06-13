@@ -70,8 +70,8 @@ module.exports = function (app) {
             ? String(Math.max(...readData.map((i) => Number(i._id))) + 1)
             : "1";
         const response = {
-          title: title,
           _id: String(id),
+          title: title,
         };
         readData = [...readData, { ...response, comments: [] }];
         writeFile(fname, JSON.stringify(readData, null, 2), (error) => {
