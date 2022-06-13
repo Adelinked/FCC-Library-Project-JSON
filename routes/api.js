@@ -41,7 +41,7 @@ module.exports = function (app) {
       let title = req.body.title;
       //response will contain new book object including atleast _id and title
       if (!title) {
-        res.json({ error: "missing required field title" });
+        res.send("missing required field title");
         return;
       }
       let readData = [];
@@ -98,7 +98,7 @@ module.exports = function (app) {
           // console.log("An error has occurred ", error);
           return;
         }
-        res.json("complete delete successful");
+        res.send("complete delete successful");
       });
     });
 
@@ -128,7 +128,7 @@ module.exports = function (app) {
             }, [])
           );
         } else {
-          res.json({ error: "no book exists" });
+          res.send("no book exists");
         }
       });
     })
@@ -138,7 +138,7 @@ module.exports = function (app) {
       let comment = req.body.comment;
 
       if (!comment) {
-        res.json({ error: "missing required field comment" });
+        res.send("missing required field comment");
         return;
       }
 
@@ -150,7 +150,7 @@ module.exports = function (app) {
         let result = JSON.parse(data);
 
         if (result.filter((i) => i._id == bookid).length < 1) {
-          res.json({ error: "no book exists" });
+          res.send("no book exists");
           return;
         }
         result = result.map((i) =>
@@ -185,7 +185,7 @@ module.exports = function (app) {
         }
         let result = JSON.parse(data);
         if (result.filter((i) => i._id == bookid).length < 1) {
-          res.json({ error: "no book exists" });
+          res.send("no book exists");
           return;
         }
         result = result.filter((i) => i._id != bookid);
@@ -195,7 +195,7 @@ module.exports = function (app) {
             //res.json({ error: "could not delete", _id: bookid });
             return;
           }
-          res.json("delete successful");
+          res.send("delete successful");
         });
       });
     });

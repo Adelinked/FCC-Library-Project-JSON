@@ -70,7 +70,7 @@ suite("Functional Tests", function () {
             .send({})
             .end(function (err, res) {
               assert.equal(res.status, 200);
-              assert.equal(res.body.error, "missing required field title");
+              assert.equal(res.text, "missing required field title");
               done();
             });
         });
@@ -98,7 +98,7 @@ suite("Functional Tests", function () {
         .get(`/api/books/99999}`)
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.body.error, "no book exists");
+          assert.equal(res.text, "no book exists");
           done();
         });
     });
@@ -139,7 +139,7 @@ suite("Functional Tests", function () {
           .send({})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.body.error, "missing required field comment");
+            assert.equal(res.text, "missing required field comment");
             done();
           });
       });
@@ -151,7 +151,7 @@ suite("Functional Tests", function () {
           .send({ comment: "comment with no book" })
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.body.error, "no book exists");
+            assert.equal(res.text, "no book exists");
             done();
           });
       });
@@ -165,7 +165,7 @@ suite("Functional Tests", function () {
         .delete(`/api/books/${bookid}`)
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.body, "delete successful");
+          assert.equal(res.text, "delete successful");
           done();
         });
     });
@@ -176,7 +176,7 @@ suite("Functional Tests", function () {
         .delete(`/api/books/9999`)
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.body.error, "no book exists");
+          assert.equal(res.text, "no book exists");
           done();
         });
     });
