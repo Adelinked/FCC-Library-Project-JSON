@@ -127,7 +127,9 @@ suite("Functional Tests", function () {
           .send({ comment: "first comment" })
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.isArray(res.body);
+            assert.equal(res.body._id, bookid);
+            assert.equal(res.body.title, "new book");
+            assert.isArray(res.body.comments);
             done();
           });
       });

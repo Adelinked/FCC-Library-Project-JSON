@@ -163,9 +163,15 @@ module.exports = function (app) {
           }
           //res.json({ result: "successfully updated", _id: id });
           res.json(
-            result.reduce((acc, obj) => {
-              const { _id, title } = obj;
-              acc.push({ _id, title, commentcount: obj.comments.length });
+            ...result.reduce((acc, obj) => {
+              const { _id, title, comments } = obj;
+              if (_id == bookid)
+                acc.push({
+                  comments,
+                  _id,
+                  title,
+                  commentcount: obj.comments.length,
+                });
               return acc;
             }, [])
           );
